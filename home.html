@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bookworm Shack</title>
+    <style>
+        .tooltip {
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+        }
+        
+        .tooltip .tooltiptext {
+          visibility: hidden;
+          width: 120px;
+          background-color: #555;
+          color: #fff;
+          text-align: center;
+          border-radius: 6px;
+          padding: 5px;
+          position: absolute;
+          z-index: 1;
+          bottom: 125%;
+          left: 50%;
+          margin-left: -60px;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        
+        .tooltip:hover .tooltiptext {
+          visibility: visible;
+          opacity: 1;
+        }
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .button-container {
+            text-align: center;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button-container button:hover {
+            background-color: #45a049;
+        }
+        .genre-container {
+            text-align: center;
+        }
+        .genre-container button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .genre-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="tooltip" id="wordTooltip">
+      
+        <span class="tooltiptext" id="wordTooltipText">Definition goes here</span>
+    </div>
+    <div id="pdfViewer"></div>
+    <div class="container">
+        <h1>The Bookworm Shack</h1>
+        <input type="text" class="search-box" placeholder="Search...">
+        <div class="button-container">
+            <button onclick="openHelpPage()">Help</button>
+        </div>
+        <div class="genre-container">
+            <button onclick="openFictionPage()">Fiction</button>
+            <button onclick="openNovelPage()">Novel</button>
+            <button onclick="openEducationPage()">Education</button>
+            <button onclick="openHorrorPage()">Horror</button>
+        </div>
+    </div>
+    <script>
+        function openHelpPage() {
+            // Replace 'help.html' with the actual URL of your help page
+            window.location.href = 'help.html';
+        }
+
+        function openFictionPage() {
+            // Redirect to the page containing fiction books
+            window.location.href = 'file:///C:/Users/lenovo%20user/Documents/project_book_store/fiction.html'; // Replace with the actual URL
+        }
+        function openNovelPage() {
+            // Redirect to the page containing fiction books
+            window.location.href = 'file:///C:/Users/lenovo%20user/Documents/project_book_store/novel.html'; // Replace with the actual URL
+        }
+        function openEducationPage() {
+            // Redirect to the page containing fiction books
+            window.location.href = 'file:///C:/Users/lenovo%20user/Documents/project_book_store/Education.html'; // Replace with the actual URL
+        }
+        function openHorrorPage() {
+            // Redirect to the page containing fiction books
+            window.location.href = 'file:///C:/Users/lenovo%20user/Documents/project_book_store/horror.html'; // Replace with the actual URL
+        }
+
+        // Initialize PDF viewer
+        var pdfViewer = new PDFViewerLib('pdfViewer');
+        pdfViewer.load('C:\Users\lenovo user\Documents\project_book_store.pdf');
+
+        // Attach event listener for word double-click
+        pdfViewer.on('wordDoubleClick', function(word) {
+            // Handle double-click event on word
+            console.log('Double-clicked word:', word);
+            // Perform word lookup and display meaning
+            displayMeaning(word);
+        });
+
+        // Function to display meaning of a word
+        function displayMeaning(word) {
+            // Perform word lookup (e.g., fetch meaning from a database)
+            var meaning = fetchMeaningFromDatabase(word);
+            // Display meaning to the user (e.g., in a tooltip or popup)
+            alert('Meaning of "' + word + '": ' + meaning);
+        }
+
+        // Function to fetch meaning of a word from a database
+        function fetchMeaningFromDatabase(word) {
+            // Example: Simulated database lookup
+            var meanings = {
+                'imported': 'something is produced in one country and brought into another',
+                'word2': 'Meaning of word2',
+                // Add more word-meaning mappings as needed
+            };
+            console.log("found");
+            return meanings[word] || 'Meaning not found';
+        }
+  
+        // Example definition fetched from API
+        const definition = fetchMeaningFromDatabase('imported');
+        
+        // Set the fetched definition in the tooltip
+        document.getElementById("wordTooltipText").textContent = definition;
+        </script>
+        <script src="script.js"></script>
+</body>
+</html>

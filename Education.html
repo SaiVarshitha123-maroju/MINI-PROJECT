@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .department-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .department-buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .department-buttons button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Education Books</h1>
+        <div class="department-buttons">
+            <button onclick="showITBooks()">IT</button>
+            <button onclick="showECEBooks()">ECE</button>
+            <button onclick="showMechanicalBooks()">Mechanical</button>
+        </div>
+        <ul id="books-list">
+            <!-- Books will be displayed here -->
+        </ul>
+    </div>
+
+    <script>
+        function showITBooks() {
+            document.getElementById('books-list').innerHTML = `
+                <li><a href="os.pdf" target="_blank">Operating Systems</a></li>
+                <li><a href="Java.pdf">Java</a></li>
+                <li><a href="python.pdf">Python</a></li>
+            `;
+        }
+
+        function showECEBooks() {
+            document.getElementById('books-list').innerHTML = `
+            <li><a href="os.pdf" target="_blank">Operating Systems</a></li>
+                <li><a href="Java.pdf">Java</a></li>
+                <li><a href="python.pdf">Python</a></li>
+            `;
+        }
+
+        function showMechanicalBooks() {
+            document.getElementById('books-list').innerHTML = `
+            <li><a href="os.pdf" target="_blank">Operating Systems</a></li>
+                <li><a href="Java.pdf">Java</a></li>
+                <li><a href="python.pdf">Python</a></li>
+            `;
+        }
+    </script>
+</body>
+</html>
